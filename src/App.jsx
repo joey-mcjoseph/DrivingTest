@@ -36,8 +36,14 @@ export default function App() {
   const [data, setData] = useState(load)
   const [view, setView] = useState({ name: 'home' })
 
-  useEffect(() => save(data), [data])
-  useEffect(() => window.scrollTo(0, 0), [view])
+  // Effect bodies use braces so nothing is returned: newer browsers make
+  // scrollTo() return a Promise, which React would treat as a cleanup function.
+  useEffect(() => {
+    save(data)
+  }, [data])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [view])
 
   const start = (session) => {
     setData((d) => ({ ...d, inProgress: session }))
