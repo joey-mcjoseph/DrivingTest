@@ -3,6 +3,7 @@
 // shuffled when shown. `sign` renders an SVG road sign (see Sign.jsx).
 // Category comes from the question's topic.
 import { TOPIC_BY_ID } from './topics.js'
+import { PARKING_QUESTIONS, SIGNS } from './signs.js'
 
 const RAW = [
   // ═══ TRAFFIC RULES ═══════════════════════════════════════════════
@@ -388,5 +389,34 @@ const RAW = [
   { id: 'at13', topic: 'attitude', q: 'What does defensive driving mean?', a: 'Keeping wide safety margins and being prepared for the unexpected', w: ['Insisting on your right of way', 'Driving as fast as allowed', 'Sounding your horn often'], why: 'Analyse the situation, think ahead and drive smoothly.' },
 ]
 
-export const QUESTIONS = RAW.map((q) => ({ ...q, cat: TOPIC_BY_ID[q.topic].cat }))
+// Stable pseudo-random number for picking distractors, so a sign question
+// always has the same set of wrong answers.
+function hash(str) {
+  let h = 2166136261
+  for (const ch of str) h = Math.imul(h ^ ch.charCodeAt(0), 16777619)
+  return h >>> 0
+}
+
+// "What does this sign mean?" for every sign in the catalogue; wrong answers
+// come from other signs in the same group, so they look plausible.
+const SIGN_QUESTIONS = SIGNS.map((s) => ({
+  id: `sign-${s.sign}`,
+  topic: 'roadsigns',
+  group: s.group,
+  sign: s.sign,
+  q: 'What does this sign mean?',
+  a: s.meaning,
+  w: SIGNS.filter((o) => o.group === s.group && o.meaning !== s.meaning)
+    .sort((x, y) => hash(s.sign + x.sign) - hash(s.sign + y.sign))
+    .slice(0, 3)
+    .map((o) => o.meaning),
+  why: `${s.name} (${s.code}).`,
+}))
+
+const PARKING_SIGN_QUESTIONS = PARKING_QUESTIONS.map((q) => ({ ...q, topic: 'parkingsigns', group: 'parking' }))
+
+export const QUESTIONS = [...RAW, ...SIGN_QUESTIONS, ...PARKING_SIGN_QUESTIONS].map((q) => ({
+  ...q,
+  cat: TOPIC_BY_ID[q.topic].cat,
+}))
 export const QUESTION_BY_ID = Object.fromEntries(QUESTIONS.map((q) => [q.id, q]))

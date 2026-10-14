@@ -10,10 +10,12 @@ import Quiz from './components/Quiz.jsx'
 import Results from './components/Results.jsx'
 import Study from './components/Study.jsx'
 import Progress from './components/Progress.jsx'
+import Signs from './components/Signs.jsx'
 
 const TABS = [
   { id: 'home', label: 'Home', icon: '🏠' },
   { id: 'study', label: 'Study', icon: '📚' },
+  { id: 'signs', label: 'Signs', icon: '🚸' },
   { id: 'progress', label: 'Progress', icon: '📈' },
 ]
 
@@ -153,6 +155,8 @@ export default function App() {
     ) : null
   } else if (view.name === 'study') {
     page = <Study attempts={data.attempts} onPracticeTopic={practiceTopic} initialTopic={view.topic} />
+  } else if (view.name === 'signs') {
+    page = <Signs attempts={data.attempts} onQuiz={(pool, title, n) => confirmReplace() && startPractice(pool, title, n)} />
   } else if (view.name === 'progress') {
     page = (
       <Progress

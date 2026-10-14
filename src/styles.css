@@ -193,3 +193,19 @@ h1, h2, h3 { margin: 0; }
 .topic-row, .history-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 0; border: none; border-top: 1px solid var(--line); background: none; text-align: left; }
 .topic-row.weak { color: var(--bad); font-weight: 600; }
 .history-row small { display: block; color: var(--muted); font-size: 13px; }
+
+/* Signs */
+.sign-stack { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.sign-panel { background: #fff; color: #111; border: 2px solid #111; border-radius: 4px; padding: 1px 6px; font-weight: 800; line-height: 1.25; font-family: Arial, Helvetica, sans-serif; white-space: nowrap; display: flex; gap: 6px; align-items: center; justify-content: center; min-width: 70%; }
+.sign-panel .red { color: #d52b1e; }
+.sign-panel svg { display: block; }
+.sign-sec-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.sign-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.sign-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; min-height: 150px; }
+.sign-card.open { border-color: var(--blue); }
+.sign-text { display: flex; flex-direction: column; gap: 2px; font-size: 13px; }
+.sign-text strong { font-size: 14px; }
+.sign-text span { color: var(--muted); }
+.hidden-meaning { color: var(--blue); font-weight: 600; font-size: 13px; }
+.switch-row { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.switch-row input { width: 20px; height: 20px; }

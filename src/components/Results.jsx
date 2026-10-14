@@ -92,7 +92,7 @@ export default function Results({ attempt, onHome, onPracticeIds }) {
             return (
               <div key={it.qid} className="review">
                 {it.trial && <span className="tag">trial</span>}
-                {q.sign && <Sign name={q.sign} size={56} />}
+                {q.sign && <Sign name={q.sign} panels={q.panels} size={64} />}
                 <p className="review-q">{q.q}</p>
                 {it.chosen != null ? (
                   <p className="review-bad">Your answer: {it.chosen}</p>

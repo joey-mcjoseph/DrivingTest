@@ -172,6 +172,38 @@ export const TOPICS = [
       'Solid line (spärrlinje): do not cross. Warning line (varningslinje): long dashes, danger ahead. Solid yellow edge line: no stopping. Broken yellow edge line: no parking.',
     ],
   },
+  {
+    id: 'roadsigns',
+    cat: 'rules',
+    name: 'Road signs',
+    notes: [
+      'Warning signs (A): yellow triangles with a red border. They warn of a danger ahead, e.g. bends, junctions, animals or level crossings.',
+      'Priority signs (B): give way (upside-down triangle), stop (octagon), priority road (yellow diamond) and crossings.',
+      'Prohibitory signs (C): round with a red border and yellow centre. A red diagonal line means "not allowed".',
+      'No parking (C35): blue with one red line. No stopping or parking (C39): blue with a red cross.',
+      'Mandatory signs (D): round and blue. Straight arrows mean the direction to follow; diagonal arrows mean pass on this side.',
+      'Instruction signs (E): mostly blue squares, e.g. parking, one-way street, dead end, passing place (M), home zone.',
+      'Warning signs for wild animals cover about 800 m from the sign.',
+      'Level crossing distance signs: 3 bars first (furthest away), then 2, then 1.',
+      'Recommended lower speed (blue square with a number) is advice, not a speed limit.',
+    ],
+  },
+  {
+    id: 'parkingsigns',
+    cat: 'rules',
+    name: 'Parking signs & panels',
+    notes: [
+      'A blue P sign alone: park for up to 24 hours on weekdays. No limit on Sundays and public holidays.',
+      'Times on panels: black = Monday–Friday, (brackets) = Saturdays (strictly, days before a Sunday or public holiday), red = Sundays and public holidays.',
+      '"Avgift" = you must pay during the times shown. "2 tim" = max 2 hours. "10 min" = max 10 minutes.',
+      'Parking disc symbol: set the disc to the next half hour after you arrive (14.40 → 15.00).',
+      'Disabled symbol: parking only with a disabled parking permit. Without one you may only stop to drop off or pick up passengers.',
+      'No parking with times (e.g. 8–17): the ban only applies during those times.',
+      'Date parking: one bar = no parking on odd dates, two bars = no parking on even dates.',
+      'Zone sign (E20, "ZON"): no parking anywhere in the zone except in spaces with parking signs.',
+      'Parking is never allowed at a passing place (M sign), on a priority road, or within 10 m before a pedestrian crossing.',
+    ],
+  },
   // ── Traffic safety ─────────────────────────────────────────────
   {
     id: 'winter',

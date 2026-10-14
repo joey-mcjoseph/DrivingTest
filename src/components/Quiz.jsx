@@ -104,7 +104,7 @@ export default function Quiz({ session, onUpdate, onFinish, onQuit }) {
         </div>
         {q.sign && (
           <div className="q-sign">
-            <Sign name={q.sign} />
+            <Sign name={q.sign} panels={q.panels} />
           </div>
         )}
         <h2 className="q-text">{q.q}</h2>
